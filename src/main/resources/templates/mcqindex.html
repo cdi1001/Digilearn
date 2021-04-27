@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>MCQ Question List</title>
+</head>
+<body>
+<div align="center">
+    <h1>MCQ Question List</h1>
+    <a href="/new">Add new Question</a>
+    <br/><br/>
+    <table border="1" >
+    	<thead>
+            <tr>
+               <th>Question ID</th>
+                <th>Question</th>
+                <th>Option 1</th>
+                <th>Option 2</th>
+                <th>Option 3</th>
+                <th>Option 4</th>
+                <th>Answer</th>
+                <th>Category</th>
+                <th>Time Limit</th>
+                <th>Quiz ID</th>
+                <th>Level</th>
+             
+                <th>Marks</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="mcq : ${listmcq}">
+               <td th:text="${mcq.qid}">Question ID</td>
+                <td th:text="${mcq.question}">Question</td>
+                <td th:text="${mcq.option_1}">Option 1</td>
+                <td th:text="${mcq.option_2}">Option 2</td>
+                <td th:text="${mcq.option_3}">Option 2</td>
+                <td th:text="${mcq.option_4}">Option 4</td>
+                <td th:text="${mcq.answer}">Answer</td>
+                 <td th:text="${mcq.category}">Category</td>
+                <td th:text="${mcq.timelimit}">Time Limit</td>
+                <td th:text="${mcq.quiz_id}">Quiz ID</td>
+                <td th:text="${mcq.level}">Level</td>
+                <td th:text="${mcq.marks}">Marks</td>
+                <td>
+                    <a th:href="@{'/edit/' + ${mcq.qid}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/delete/' + ${mcq.qid}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
+</body>
+</html>

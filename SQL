@@ -1,0 +1,30 @@
+CREATE TABLE QueMatching( TestID INTEGER, QID INTEGER, Question TEXT, TimeLimit INTEGER, Level TEXT, Type TEXT, Marks INTEGER, PRIMARY KEY(TestID,QID));
+INSERT INTO QueMatching VALUES( 1,1,"ABC",100,"HARD","LOOP",5);
+SELECT * FROM QueMatching;
+1|1|ABC|100|HARD|LOOP|5
+
+CREATE TABLE QueMatching_Clue( TestID INTEGER, QID INTEGER,ClueID INTEGER,Clue TEXT, ClueOrder INTEGER, ClueType TEXT, PRIMARY KEY(TestID,QID, ClueID), FOREIGN KEY(QID) REFERENCES QueMatching(QID));
+INSERT INTO QueMatching_Clue VALUES( 1,1,1,"clue1",1,"Text");
+INSERT INTO QueMatching_Clue VALUES( 1,1,2,"clue2",2,"Text");
+CREATE TABLE QueMatching_Match( TestID INTEGER, QID INTEGER,MatchID INTEGER,Match TEXT, MatchOrder INTEGER, MatchType TEXT, PRIMARY KEY(TestID,QID, MatchID), FOREIGN KEY(QID) REFERENCES QueMatching(QID));
+INSERT INTO QueMatching_Match VALUES( 1,1,1,"Match1",2,"Text");
+INSERT INTO QueMatching_Match VALUES( 1,1,2,"Match2",1,"Text");
+
+SELECT * FROM QueMatching_Clue;
+1|1|1|clue1|1|Text
+1|1|2|clue2|2|Text
+SELECT * FROM QueMatching_Match;
+1|1|1|Match1|2|Text
+1|1|2|Match2|1|Text
+
+CREATE TABLE QueFreeTextandEssay( TestID INTEGER, QID INTEGER,Question TEXT, KeyWords TEXT,TimeLimit INTEGER, WordLimit INTEGER,Level TEXT, Category TEXT, PRIMARY KEY(TestID,QID));
+INSERT INTO QueFreeTextandEssay VALUES( 1,1,"WW1","Germany Russia USA France",100, 50, "HARD", "HISTORY");
+SELECT * FROM QueFreeTextandEssay;
+1|1|WW1|Germany Russia USA France|100|50|HARD|HISTORY
+
+CREATE TABLE QueGrammar( TestID INTEGER, QID INTEGER,Question TEXT, ExpectedAns TEXT,TimeLimit INTEGER, WordLimit INTEGER,Level TEXT, Category TEXT, PRIMARY KEY(TestID,QID));
+INSERT INTO QueGrammar VALUES(1,2,"People --- sad (PAST TENSE)","were", 100, 10, "EASY", "ENGLISH");
+INSERT INTO QueGrammar VALUES(1,1,"He ---- theexam, 5 times. (TAKE, PAST TENSE)","took, has taken", 100, 10, "EASY", "ENGLISH");
+SELECT * FROM QueGrammar;
+1|2|People --- sad (PAST TENSE)|were|100|10|EASY|ENGLISH
+1|1|He ---- theexam, 5 times. (TAKE, PAST TENSE)|took, has taken|100|10|EASY|ENGLISH

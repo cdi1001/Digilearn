@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Scores List</title>
+</head>
+<body>
+<div align="center">
+    <h1>Scores List</h1>
+    <a href="/new">Add New Scores</a>
+    <br/><br/>
+    <table border="1" >
+    	<thead>
+            <tr>
+               <th>Student ID</th>
+                <th>Name</th>
+                <th>Score</th>
+                <th>Ranking</th>
+                <th>Quiz ID</th>
+                <th>Location</th>
+                <th>Country</th>
+                  <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="quiz_score : ${listquiz_score}">
+                <td th:text="${quiz_score.student_id}">Student ID</td>
+                <td th:text="${quiz_score.name}">Name</td>
+                <td th:text="${quiz_score.score}">Score</td>
+                <td th:text="${quiz_score.ranking}">Ranking</td>
+                <td th:text="${quiz_score.quiz_id}">Quiz ID</td>
+                <td th:text="${quiz_score.location}">Location</td>
+                 <td th:text="${quiz_score.country}">Country</td>
+                <td>
+                    <a th:href="@{'/edit/' + ${quiz_score.student_id}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/delete/' + ${quiz_score.student_id}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
+</body>
+</html>

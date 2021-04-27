@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>True/False List</title>
+</head>
+<body>
+<div align="center">
+    <h1>True/False List</h1>
+    <a href="/new">Add new Question</a>
+    <br/><br/>
+    <table border="1" >
+    	<thead>
+            <tr>
+                <th>Question ID</th>
+                <th>Question</th>
+                <th>Option 1</th>
+                <th>Option 2</th>
+                <th>Answer</th>
+                <th>Time Limit</th>
+                <th>Quiz ID</th>
+                <th>Marks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="truefalse : ${listtruefalse}">
+               <td th:text="${truefalse.qid}">Question ID</td>
+                <td th:text="${truefalse.question}">Question</td>
+                <td th:text="${truefalse.option_1}">Option 1</td>
+                <td th:text="${truefalse.option_2}">Option 2</td>
+                <td th:text="${truefalse.answer}">Answer</td>
+                <td th:text="${truefalse.timelimit}">Time Limit</td>
+                <td th:text="${truefalse.quiz_id}">Quiz ID</td>
+                <td th:text="${truefalse.marks}">Marks</td>
+                <td>
+                    <a th:href="@{'/edit/' + ${truefalse.qid}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/delete/' + ${truefalse.qid}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
+</body>
+</html>

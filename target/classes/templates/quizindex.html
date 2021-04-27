@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<script type="text/javascript" src="webjars/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<title>Quiz List</title>
+</head>
+<body>
+<div align="center" class="container">
+<div class="card">
+<div class="card-block">
+    <h1>Quiz List</h1>
+    <a href="/new">Add new Quiz</a>
+    <br/><br/>
+    <table class="table table-hover">
+    	<thead>
+            <tr>
+                <th>Quiz ID</th>
+                 <th>Quiz Name</th>
+                <th>Category</th>
+                <th>Duration</th>
+                <th>Marks</th>
+                <th>Level</th>
+                <th>Attempts</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="Quiz : ${data.content}">
+                <td th:text="${Quiz.Id}">Quiz ID</td>
+                <td th:text="${Quiz.Quiz_Name}">Topic</td>
+                <td th:text="${Quiz.Category}">Category</td>
+                <td th:text="${Quiz.Duration}">Duration</td>
+                <td th:text="${Quiz.Marks}">Marks</td>
+                <td th:text="${Quiz.Level}">Level</td>
+                <td th:text="${Quiz.Attempts_Available}">Attempts</td>
+                <td>
+                    <a th:href="@{'/edit/' + ${Quiz.Quiz_ID}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/delete/' + ${Quiz.Quiz_ID}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    </div>
+</div>   
+</body>
+</html>

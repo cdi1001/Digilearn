@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<link href="webjars/bootstrap/4.3.1/css/bootstrap.css" rel="stylesheet" />
+
+<script type="text/javascript" src="webjars/jquery/3.0.0/jquery.min.js"></script>
+<script type="text/javascript" src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../static/js/main.js"></script>
+<meta charset="ISO-8859-1">
+<title>Quiz</title>
+</head>
+<body>
+<h2>List of Quiz</h2>
+<div class="container">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal" data-whatever="@mdo">Add Quiz</button>
+
+ <table class="table table-stripped">
+    	<thead>
+            <tr>
+                <th>Quiz ID</th>
+                 <th>Quiz Name</th>
+                <th>Category</th>
+                <th>Duration</th>
+                <th>Marks</th>
+                <th>Level</th>
+                <th>Attempts</th>
+                 <th>Edit</th>
+                <th>Delete</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="Quiz : ${quiz}">
+                <td th:text="${Quiz.Id}">Quiz ID</td>
+                <td th:text="${Quiz.Quiz_Name}">Topic</td>
+                <td th:text="${Quiz.Category}">Category</td>
+                <td th:text="${Quiz.Duration}">Duration</td>
+                <td th:text="${Quiz.Marks}">Marks</td>
+                <td th:text="${Quiz.Level}">Level</td>
+                <td th:text="${Quiz.Attempts_Available}">Attempts</td>
+               <td><a class="btn btn-warning editButton">Edit</a></td>
+               <td><a class="btn btn-danger deleteButton">Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <form th:action="@{/addNew}" method="post">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+          <div class="form-group">
+            <label for="Id" class="col-form-label">Id</label>
+            <input type="text" class="form-control" id="IdAdd" name="ID">
+          </div>
+          
+          <div class="form-group">
+            <label for="quiz_name" class="col-form-label">Quiz Name</label>
+            <input type="text" class="form-control" id="quiz_nameAdd" name="quiz_name">
+          </div>
+          <div class="form-group">
+            <label for="category" class="col-form-label">Category</label>
+            <input type="text" class="form-control" id="categoryAdd" name="category">
+          </div>
+          <div class="form-group">
+            <label for="duration" class="col-form-label">Duration</label>
+            <input type="text" class="form-control" id="durationAdd" name="duration">
+          </div>
+          <div class="form-group">
+            <label for="marks" class="col-form-label">Marks</label>
+            <input type="text" class="form-control" id="marksAdd" name="marks">
+          </div>
+          <div class="form-group">
+            <label for="level" class="col-form-label">Level</label>
+            <input type="text" class="form-control" id="levelAdd" name="level">
+          </div>
+           <div class="form-group">
+            <label for="attempts_available" class="col-form-label">Attempts</label>
+            <input type="text" class="form-control" id="attempts_availableAdd" name="attempts_available">
+          </div>
+           
+          </div>
+          
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+    </form>
+  </div>
+    
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Add New Category</title>
+</head>
+<body>
+    <div align="center">
+        <h1>Add New Category</h1>
+        <br />
+        <form action="#" th:action="@{/save}" th:object="${category}"
+            method="post">
+            
+ 
+            <table border="1" >
+            <tr>
+                    <td>Category ID:</td>
+                    <td><input type="text" th:field="*{category_id}" /></td>
+            </tr>
+            <tr>
+                    <td>Category</td>
+                    <td><input type="text" th:field="*{category}" /></td>
+            </tr>
+            <tr>
+                    <td>Sub_Category</td>
+                    <td><input type="text" th:field="*{sub_category}" /></td>
+             </tr>
+             <tr>
+                    <td>Grade</td>
+                    <td><input type="text" th:field="*{grade}" /></td>
+             </tr>
+             <tr>
+                    <td>Unit</td>
+                    <td><input type="text" th:field="*{unit}" /></td>
+             </tr> 
+             <tr>
+                    <td>Level:</td>
+                    <td><input type="text" th:field="*{level}" /></td>
+             </tr>  
+                
+                                   
+             <tr>
+                    <td colspan="2" align="center"><button type="submit">Save</button> </td>
+              </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

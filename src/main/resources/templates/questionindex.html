@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Question Database</title>
+</head>
+<body>
+<div align="center">
+    <h1>Question List</h1>
+    <a href="/new">Add new Question</a>
+    <br/><br/>
+    <table border="1" >
+    	<thead>
+            <tr>
+                <th>Quiz ID</th>
+                <th>Category</th>
+                <th>Duration</th>
+                <th>Marks</th>
+                <th>Level</th>
+                <th>Attempts</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="Questions : ${listQuestions}">
+                <td th:text="${Questions.QuizID}">Quiz ID</td>
+                <td th:text="${Questions.Category}">Category</td>
+                <td th:text="${Questions.Duration}">Duration</td>
+                <td th:text="${Questions.Marks}">Marks</td>
+                <td th:text="${Questions.Level}">Level</td>
+                <td th:text="${Questions.Attempts}">Attempts</td>
+                <td>
+                    <a th:href="@{'/edit/' + ${Questions.QuizID}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/delete/' + ${Questions.QuizID}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
+</body>
+</html>

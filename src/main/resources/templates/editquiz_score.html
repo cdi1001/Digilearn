@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Edit Quiz Score</title>
+</head>
+<body>
+    <div align="center">
+        <h1>Edit Quiz Score</h1>
+        <br />
+        <form action="#" th:action="@{/save}" th:object="${quiz_score}"
+            method="post">
+ 
+            <table border="1" >
+                <tr>             
+                    <td> Student ID:</td>
+                    <td>
+                        <input type="text" th:field="*{student_id}" >
+                    </td>
+                </tr>  
+                <tr>             
+                    <td> Name:</td>
+                    <td>
+                        <input type="text" th:field="*{name}">
+                    </td>
+                </tr>        
+                <tr>             
+                    <td>Score</td>
+                    <td>
+                        <input type="text" th:field="*{score}" >
+                    </td>
+                </tr>
+              <tr>             
+                    <td>Ranking</td>
+                    <td>
+                        <input type="text" th:field="*{ranking}">
+                    </td>
+                </tr>
+                <tr>             
+                    <td>Quiz ID</td>
+                    <td>
+                        <input type="text" th:field="*{quiz_id}">
+                    </td>
+                </tr>
+             
+                <tr>
+                    <td>Location:</td>
+                    <td><input type="text" th:field="*{location}" /></td>
+                </tr> 
+                <tr>             
+                    <td>Country</td>
+                    <td>
+                        <input type="text" th:field="*{country}">
+                    </td>
+                </tr>                             
+                <tr>
+                    <td colspan="2"><button type="submit">Save</button> </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

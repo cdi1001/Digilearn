@@ -1,0 +1,59 @@
+/*Details of all quizzes*/
+/**create database quizzer; **/
+use quizzer;
+/*Database name - system*/
+CREATE TABLE QUIZ(Quiz_ID INTEGER PRIMARY KEY,Quiz_Name Text, Category Text,Duration INTEGER, Marks INT,Level TEXT,Availability Date,Attempts_Available INTEGER);
+INSERT INTO QUIZ VALUES(1,"Java Loops","Computer Systems",100,100,"Intermediate",'2020-08-15',1);
+ SELECT * FROM QUIZ;
+ /**
++---------+------------+------------------+----------+-------+--------------+--------------+--------------------+
+| Quiz_ID | Quiz_Name  | Category         | Duration | Marks | Level        | Availability | Attempts_Available |
++---------+------------+------------------+----------+-------+--------------+--------------+--------------------+
+|       1 | Java Loops | Computer Systems |      100 |   100 | Intermediate | 2020-08-15   |                  1 |
+|       2 | SQL        | Computer Systems |      100 |   100 | Intermediate | 2020-08-15   |                  1 |
++---------+------------+------------------+----------+-------+--------------+--------------+--------------------+
+**/
+/*Table showing score and rankings*/
+CREATE TABLE Quiz_Score(STUDENT_ID INTEGER PRIMARY KEY,Name TEXT,Quiz_ID INTEGER, Score INTEGER,Ranking INTEGER,Location TEXT,Country TEXT);
+INSERT INTO Quiz_Score VALUES(1,"Seema",1,100,1,"Pune","India");
+ Select * from quiz_score;
+ /**
++------------+-------+---------+-------+---------+----------+---------+
+| STUDENT_ID | Name  | Quiz_ID | Score | Ranking | Location | Country |
++------------+-------+---------+-------+---------+----------+---------+
+|          1 | Seema |       1 |   100 |       1 | Pune     | India   |
++------------+-------+---------+-------+---------+----------+---------+
+**/
+/*Table for multiple choice questions*/
+CREATE TABLE MCQ(QID INTEGER PRIMARY KEY, Question TEXT,Option_1 TEXT,Option_2 TEXT,Option_3 TEXT,Option_4 TEXT, Answer TEXT,TimeLimit INTEGER, Quiz_ID INTEGER,Level TEXT ,Category TEXT, Marks INTEGER);
+INSERT INTO MCQ VALUES(1,"Which of the following is possible in a token passing bus network ?","in-service expansion","unlimited number of stations","unlimited distance","None of the above","in-service expansion",100, 1,"Intermediate","Computer Systems",1);
+SELECT * FROM MCQ;
+/** 
++-----+---------------------------------------------------------------------+----------------------+------------------------------+--------------------+-------------------+----------------------+-----------+---------+--------------+------------------+-------+
+| QID | Question                                                            | Option_1             | Option_2                     | Option_3           | Option_4          | Answer               | TimeLimit | Quiz_ID | Level        | Category         | Marks |
++-----+---------------------------------------------------------------------+----------------------+------------------------------+--------------------+-------------------+----------------------+-----------+---------+--------------+------------------+-------+
+|   1 | Which of the following is possible in a token passing bus network ? | in-service expansion | unlimited number of stations | unlimited distance | None of the above | in-service expansion |       100 |       1 | Intermediate | Computer Systems |     1 |
++-----+---------------------------------------------------------------------+----------------------+------------------------------+--------------------+-------------------+----------------------+-----------+---------+--------------+------------------+-------+
+**/
+/*Table for true/false questions*/
+CREATE TABLE TRUEFALSE(QID INTEGER PRIMARY KEY, Question TEXT,Option_1 TEXT,Option_2 TEXT, Answer TEXT,TimeLimit INTEGER,Quiz_ID INTEGER, Level TEXT,Category TEXT,Marks INTEGER);
+INSERT INTO TRUEFALSE VALUES(1,"While Loop is an entry controlled loop","True","False","True",100,1,"Beginner","Computer Systems",1);
+SELECT * FROM TRUEFALSE;
+/**
++-----+----------------------------------------+----------+----------+--------+-----------+---------+----------+------------------+-------+
+| QID | Question                               | Option_1 | Option_2 | Answer | TimeLimit | Quiz_ID | Level    | Category         | Marks |
++-----+----------------------------------------+----------+----------+--------+-----------+---------+----------+------------------+-------+
+|   1 | While Loop is an entry controlled loop | True     | False    | True   |       100 |       1 | Beginner | Computer Systems |     1 |
++-----+----------------------------------------+----------+----------+--------+-----------+---------+----------+------------------+-------+
+**/
+/*Table for categories and sub-categories*/
+CREATE TABLE Quiz_Categories(Category_ID INTEGER PRIMARY KEY,Category Text NOT NULL,Grade INTEGER NOT NULL,Sub_Category TEXT NOT NULL,Unit Text NOT NULL, Level Text NOT NULL);
+/*Query OK, 0 rows affected (0.09 sec) */
+INSERT INTO Quiz_Categories VALUES(1,"Maths",8,"Calculus","Integrals","Intermediate");
+
+/*To import fields from csv file in sqlite*/
+.mode csv
+.import c:/sqlite/categories.csv Quiz_Categories
+
+
+

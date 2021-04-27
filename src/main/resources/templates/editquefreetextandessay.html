@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Edit Free Text And Essay Question</title>
+</head>
+<body>
+    <div align="center">
+        <h1>Edit Free Text And Essay Question</h1>
+        <br />
+        <form action="#" th:action="@{/save}" th:object="${QueFreeTextAndEssay}"
+            method="post">
+ 
+            <table border="1">
+                <tr>             
+                    <td>Quiz_ID:</td>
+                    <td>
+                        <input type="text" th:field="*{qid.quizid}" readonly="readonly" />
+                    </td>
+                </tr>        
+                <tr>             
+                    <td>Ques_ID:</td>
+                    <td>
+                        <input type="text" th:field="*{qid.quesid}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Question:</td>
+                    <td><input type="text" th:field="*{question}" /></td>
+                </tr>
+                <tr>
+                    <td>Keywords:</td>
+                    <td><input type="text" th:field="*{keywords}" /></td>
+                </tr>
+                <tr>
+                    <td>Time Limit:</td>
+                    <td><input type="text" th:field="*{timelimit}" /></td>
+                </tr>  
+                 <tr>
+                    <td>Word Limit:</td>
+                    <td><input type="text" th:field="*{wordlimit}" /></td>
+                </tr>
+                <tr>
+                    <td>Level:</td>
+                    <td><input type="text" th:field="*{level}" /></td>
+                </tr>                           
+                <tr>
+                    <td>Category:</td>
+                    <td><input type="text" th:field="*{category}" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="submit">Save</button> </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

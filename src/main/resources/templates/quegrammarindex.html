@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Grammar Question List</title>
+</head>
+<body>
+<div align="center">
+    <h1>Grammar Question List</h1>
+    <a href="/new">Add new Question</a>
+    <br/><br/>
+    <table border="1" >
+    	<thead>
+            <tr>
+                <th>Quiz ID</th>
+                <th>Question ID</th>
+                <th>Question</th>
+                <th>Response</th>
+                <th>Time Limit</th>
+                <th>Word Limit</th>
+                <th>Level</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="QueGrammar : ${listQueGrammar}">
+                <td th:text="${QueGrammar.QuizID}">Quiz ID</td>
+                <td th:text="${QueGrammar.Quizname}">Topic</td>
+                <td th:text="${QueGrammar.Category}">Category</td>
+                <td th:text="${QueGrammar.Duration}">Duration</td>
+                <td th:text="${QueGrammar.Marks}">Marks</td>
+                <td th:text="${QueGrammar.Level}">Level</td>
+                <td th:text="${QueGrammar.Attempts_Available}">Attempts</td>
+                <td>
+                    <a th:href="@{'/edit/' + ${Quiz.Quiz_ID}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/delete/' + ${Quiz.Quiz_ID}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Categories List</title>
+</head>
+<body>
+<div align="center">
+    <h1>Category List</h1>
+    <a href="/new">Add new Category</a>
+    <br/><br/>
+    <table border="1" >
+    	<thead>
+            <tr>
+                <th>Category ID</th>
+                 <th>Category</th>
+                <th>Sub_Category</th>
+                <th>Grade</th>
+                <th>Unit</th>
+                <th>Level</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="category : ${listcategory}">
+               <td th:text="${category.category_id}">Category ID</td>
+               <td th:text="${category.category}">Category</td>
+               <td th:text="${category.sub_category}">Sub-Category</td>
+                <td th:text="${category.grade}">Grade</td>
+                <td th:text="${category.unit}">Unit</td>
+                <td th:text="${category.level}">Level</td>
+                <td>
+                    <a th:href="@{'/edit/' + ${category.category_id}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/delete/' + ${category.category_id}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
+</body>
+</html>
